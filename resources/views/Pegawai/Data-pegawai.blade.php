@@ -70,14 +70,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <td>{{ date('d-m-Y', strtotime($item->tgl_lahir)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tgl_bergabung)) }}</td>
                                     <td>
-                                        <a href="{{ route('edit-pegawai', $item->id) }}"><i
-                                                class="fas fa-edit"></i></a> | <a href="#"><i
-                                                class="fas fa-trash-alt" style="color: red"></i></a>
+                                        <a href="{{ url('edit-pegawai', $item->id) }}"><i class="fas fa-edit"></i></a>
+                                        |
+                                        <a href="{{ url('delete-pegawai', $item->id) }}"><i class="fas fa-trash-alt"
+                                                style="color: red"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
 
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        {{ $dtPegawai->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
 

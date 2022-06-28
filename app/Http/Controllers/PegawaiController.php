@@ -14,7 +14,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $dtPegawai = Pegawai::all();
+        $dtPegawai = Pegawai::paginate(1);
         return view('Pegawai.Data-pegawai', compact('dtPegawai'));
     }
 
@@ -93,6 +93,8 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $peg = Pegawai::findorfail($id);
+        $peg->delete();
+        return back()->with('info', 'Data Berhasil Dihapus');;
     }
 }

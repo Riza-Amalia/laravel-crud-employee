@@ -21,3 +21,4 @@ Route::get('/create-pegawai', [PegawaiController::class, 'create'])->name('creat
 Route::post('/simpan-pegawai', [PegawaiController::class, 'store'])->name('simpan-pegawai');
 Route::get('/edit-pegawai/{id}', [PegawaiController::class, 'edit'])->name('edit-pegawai');
 Route::post('/update-pegawai/{id}', [PegawaiController::class, 'update'])->name('update-pegawai');
+Route::get('/delete-pegawai/{id}', [PegawaiController::class, 'destroy'])->name('delete-pegawai');
