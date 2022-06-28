@@ -11,6 +11,11 @@ class Cuti extends Model
     protected $table = "cuti";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'tgl_cuti', 'lama_cuti', 'keterangan'
+        'id', 'pegawai_id', 'tgl_cuti', 'lama_cuti', 'keterangan'
     ];
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class);
+    }
 }

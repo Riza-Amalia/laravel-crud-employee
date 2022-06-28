@@ -50,6 +50,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <form action="{{ route('simpan-cuti') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group">
+                                <select name="pegawai_id" id="pegawai_id" class="form-control select2"
+                                    style="width: 100%;">
+                                    <option disabled value>Pilih Nomor Induk</option>
+                                    @foreach ($peg as $item)
+                                        <option value="{{ $item->id }}">{{ $item->no_induk }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="date" id="tgl_cuti" name="tgl_cuti" class="form-control"
                                     placeholder="Tanggal Cuti">
                             </div>

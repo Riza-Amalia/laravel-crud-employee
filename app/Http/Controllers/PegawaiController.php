@@ -14,7 +14,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $dtPegawai = Pegawai::paginate(1);
+        $dtPegawai = Pegawai::latest()->paginate(5);
         return view('Pegawai.Data-pegawai', compact('dtPegawai'));
     }
 

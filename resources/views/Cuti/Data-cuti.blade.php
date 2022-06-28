@@ -54,6 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <table class="table table-bordered">
                             <tr>
                                 <th>Nomor</th>
+                                <th>Nomor Induk</th>
                                 <th>Tanggal Cuti</th>
                                 <th>Lama Cuti</th>
                                 <th>Keterangan</th>
@@ -62,6 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             @foreach ($dtCuti as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->pegawai->no_induk }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tgl_cuti)) }}</td>
                                     <td>{{ $item->lama_cuti }}</td>
                                     <td>{{ $item->keterangan }}</td>

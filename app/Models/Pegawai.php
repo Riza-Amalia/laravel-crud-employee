@@ -13,4 +13,9 @@ class Pegawai extends Model
     protected $fillable = [
         'id', 'no_induk', 'nama', 'alamat', 'tgl_lahir', 'tgl_bergabung'
     ];
+
+    public function cuti()
+    {
+        return $this->hasMany(Cuti::class);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cuti;
+use App\Models\Pegawai;
 
 class CutiController extends Controller
 {
@@ -14,7 +15,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $dtCuti = Cuti::paginate(1);
+        $dtCuti = Cuti::with('pegawai')->latest()->paginate(5);
         return view('Cuti.Data-cuti', compact('dtCuti'));
     }
 
@@ -25,7 +26,8 @@ class CutiController extends Controller
      */
     public function create()
     {
-        return view('Cuti.Create-cuti');
+        $peg = Pegawai::all();
+        return view('Cuti.Create-cuti', compact('peg'));
     }
 
     /**
@@ -38,6 +40,7 @@ class CutiController extends Controller
     {
         // dd($request->all());
         Cuti::create([
+            'pegawai_id' => $request->pegawai_id,
             'tgl_cuti' => $request->tgl_cuti,
             'lama_cuti' => $request->lama_cuti,
             'keterangan' => $request->keterangan,
@@ -65,8 +68,9 @@ class CutiController extends Controller
      */
     public function edit($id)
     {
-        $peg = Cuti::findorfail($id);
-        return view('Cuti.Edit-cuti', compact('peg'));
+        $cuti = Pegawai::all();
+        $peg = Cuti::with('pegawai')->findorfail($id);
+        return view('Cuti.Edit-cuti', compact('peg', 'cuti'));
     }
 
     /**
