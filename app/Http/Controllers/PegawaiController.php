@@ -67,7 +67,8 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peg = Pegawai::findorfail($id);
+        return view('Pegawai.Edit-pegawai', compact('peg'));
     }
 
     /**
@@ -79,7 +80,9 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peg = Pegawai::findorfail($id);
+        $peg->update($request->all());
+        return redirect('data-pegawai')->with('toast_success', 'Data Berhasil Update');
     }
 
     /**

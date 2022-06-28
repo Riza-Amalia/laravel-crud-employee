@@ -44,46 +44,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <div class="card-tools">
-                            <a href="{{ route('create-pegawai') }}" class="btn btn-success">Tambah Data <i
-                                    class="fas fa-plus-square"></i></a>
-                        </div>
+                        <h3>Edit Data Pegawai</h3>
                     </div>
-
                     <div class="card-body">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>Nomor</th>
-                                <th>Nomor Induk</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Tanggal Bergabung</th>
-                                <th>Aksi</th>
-                            </tr>
-                            @foreach ($dtPegawai as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->no_induk }}</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->alamat }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->tgl_lahir)) }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->tgl_bergabung)) }}</td>
-                                    <td>
-                                        <a href="{{ route('edit-pegawai', $item->id) }}"><i
-                                                class="fas fa-edit"></i></a> | <a href="#"><i
-                                                class="fas fa-trash-alt" style="color: red"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-                        </table>
+                        <form action="{{ url('update-pegawai', $peg->id) }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <input type="text" id="no_induk" name="no_induk" class="form-control"
+                                    placeholder="Nomor Induk" value="{{ $peg->no_induk }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="nama" name="nama" class="form-control"
+                                    placeholder="Nama Pegawai" value="{{ $peg->nama }}">
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat">{{ $peg->alamat }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control"
+                                    placeholder="Tanggal Lahir" value="{{ $peg->tgl_lahir }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="tgl_bergabung" name="tgl_bergabung" class="form-control"
+                                    placeholder="Tanggal Bergabung" value="{{ $peg->tgl_bergabung }}">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    Ubah Data
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-
-
-
             </div>
             <!-- /.content -->
         </div>
@@ -109,7 +101,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     @include('Template.script')
-    @include('sweetalert::alert')
 </body>
 
 </html>
