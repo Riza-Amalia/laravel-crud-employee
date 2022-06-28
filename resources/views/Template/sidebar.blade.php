@@ -51,6 +51,11 @@
                                 <p>Data Pegawai</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('data-cuti') }}" class="nav-link">
+                                <p>Cuti Pegawai</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{-- <li class="nav-item">

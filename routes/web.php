@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CutiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,10 @@ Route::post('/simpan-pegawai', [PegawaiController::class, 'store'])->name('simpa
 Route::get('/edit-pegawai/{id}', [PegawaiController::class, 'edit'])->name('edit-pegawai');
 Route::post('/update-pegawai/{id}', [PegawaiController::class, 'update'])->name('update-pegawai');
 Route::get('/delete-pegawai/{id}', [PegawaiController::class, 'destroy'])->name('delete-pegawai');
+
+Route::get('/data-cuti', [CutiController::class, 'index'])->name('data-cuti');
+Route::get('/create-cuti', [CutiController::class, 'create'])->name('create-cuti');
+Route::post('/simpan-cuti', [CutiController::class, 'store'])->name('simpan-cuti');
+Route::get('/edit-cuti/{id}', [CutiController::class, 'edit'])->name('edit-cuti');
+Route::post('/update-cuti/{id}', [CutiController::class, 'update'])->name('update-cuti');
+Route::get('/delete-cuti/{id}', [CutiController::class, 'destroy'])->name('delete-cuti');
