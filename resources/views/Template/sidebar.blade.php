@@ -14,7 +14,7 @@
                 <img src="{{ asset('Picture/laravel.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">Riza Amalia Hariyanti</a>
             </div>
         </div>
 
