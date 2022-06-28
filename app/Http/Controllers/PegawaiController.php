@@ -45,7 +45,7 @@ class PegawaiController extends Controller
             'tgl_bergabung' => $request->tgl_bergabung,
         ]);
 
-        return redirect('data-pegawai');
+        return redirect('data-pegawai')->with('toast_success', 'Data Berhasil Tersimpan');
     }
 
     /**
