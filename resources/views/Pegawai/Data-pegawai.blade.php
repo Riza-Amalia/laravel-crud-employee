@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
+                                <li class="breadcrumb-item active">Data Pegawai</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -42,15 +42,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main content -->
             <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <div class="card-tools">
+                            <a href="{{ route('create-pegawai') }}" class="btn btn-success">Tambah Data <i
+                                    class="fas fa-plus-square"></i></a>
                         </div>
-
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Nomor Induk</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Tanggal Bergabung</th>
+                            </tr>
+                            @foreach ($dtPegawai as $item)
+                                <tr>
+                                    <td>{{ $item->no_induk }}</td>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->alamat }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tgl_lahir)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tgl_bergabung)) }}</td>
+                                </tr>
+                            @endforeach
+
+                        </table>
+                    </div>
+                </div>
+
+
+
+
             </div>
             <!-- /.content -->
         </div>

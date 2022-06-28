@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
+                                <li class="breadcrumb-item active">Data Pegawai</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -42,15 +42,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main content -->
             <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-
-                        </div>
-
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h3>Create Data Pegawai</h3>
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                    <div class="card-body">
+                        <form action="{{ route('simpan-pegawai') }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <input type="text" id="no_induk" name="no_induk" class="form-control"
+                                    placeholder="Nomor Induk">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="nama" name="nama" class="form-control"
+                                    placeholder="Nama Pegawai">
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control"
+                                    placeholder="Tanggal Lahir">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="tgl_bergabung" name="tgl_bergabung" class="form-control"
+                                    placeholder="Tanggal Bergabung">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">
+                                    Simpan Data
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <!-- /.content -->
         </div>
