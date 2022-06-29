@@ -67,6 +67,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     placeholder="Lama Cuti">
                             </div>
                             <div class="form-group">
+                                <input type="text" id="sisa_cuti" name="sisa_cuti" class="form-control"
+                                    placeholder="Sisa Cuti">
+                            </div>
+                            <div class="form-group">
                                 <input type="text" id="keterangan" name="keterangan" class="form-control"
                                     placeholder="Keterangan">
                             </div>

@@ -48,6 +48,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="{{ route('create-pegawai') }}" class="btn btn-success">Tambah Data <i
                                     class="fas fa-plus-square"></i></a>
                         </div>
+                        <div class="card-tools mr-2">
+                            <div class="dropdown show">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button"
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Sort
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('data-pegawai-first3') }}">3 Pertama
+                                        Bergabung</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card-body">
@@ -61,9 +75,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <th>Tanggal Bergabung</th>
                                 <th>Aksi</th>
                             </tr>
-                            @foreach ($dtPegawai as $item)
+                            @foreach ($dtPegawai as $index => $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $index + $dtPegawai->firstItem() }}</td>
                                     <td>{{ $item->no_induk }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->alamat }}</td>

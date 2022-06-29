@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Starter Page</h1>
+                            <h1 class="m-0">Cuti > 1</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -44,42 +44,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3>Edit Data Cuti</h3>
+                        <div class="card-tools">
+                            <a href="{{ route('data-cuti') }}" class="btn btn-success mr-2">Kembali</a>
+                        </div>
                     </div>
+
                     <div class="card-body">
-                        <form action="{{ url('update-cuti', $peg->id) }}" method="POST">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <select name="pegawai_id" id="pegawai_id" class="form-control select2"
-                                    style="width: 100%;">
-                                    <option disabled value>Pilih Nomor Induk</option>
-                                    @foreach ($cuti as $item)
-                                        <option value="{{ $item->id }}">{{ $item->no_induk }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="date" id="tgl_cuti" name="tgl_cuti" class="form-control"
-                                    placeholder="Tanggal Cuti" value="{{ $peg->tgl_cuti }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="lama_cuti" name="lama_cuti" class="form-control"
-                                    placeholder="Lama Cuti" value="{{ $peg->lama_cuti }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="sisa_cuti" name="sisa_cuti" class="form-control"
-                                    placeholder="Sisa Cuti" value="{{ $peg->sisa_cuti }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="keterangan" name="keterangan" class="form-control"
-                                    placeholder="Keterangan" value="{{ $peg->keterangan }}">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success">
-                                    Ubah Data
-                                </button>
-                            </div>
-                        </form>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Nomor</th>
+                                <th>Nomor Induk</th>
+                                <th>Tanggal Cuti</th>
+                                <th>Lama Cuti</th>
+                                <th>Keterangan</th>
+
+                            </tr>
+                            @foreach ($dtCuti as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->pegawai->no_induk }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tgl_cuti)) }}</td>
+                                    <td>{{ $item->lama_cuti }}</td>
+                                    <td>{{ $item->keterangan }}</td>
+
+                                </tr>
+                            @endforeach
+
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        {{-- {{ $dtCuti->links('pagination::bootstrap-4') }} --}}
                     </div>
                 </div>
             </div>
@@ -107,6 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     @include('Template.script')
+    @include('sweetalert::alert')
 </body>
 
 </html>

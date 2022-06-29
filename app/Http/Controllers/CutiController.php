@@ -19,6 +19,20 @@ class CutiController extends Controller
         return view('Cuti.Data-cuti', compact('dtCuti'));
     }
 
+    public function sisaCuti()
+    {
+        $dtCuti = Cuti::with('pegawai')->latest()->paginate(5);
+        return view('Cuti.Sisa-cuti', compact('dtCuti'));
+    }
+
+
+
+    public function ambilCuti()
+    {
+        $dtCuti = Cuti::select("*")->where("lama_cuti", ">", 1)->get();
+        return view('Cuti.Ambil-cuti', compact('dtCuti'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,6 +57,7 @@ class CutiController extends Controller
             'pegawai_id' => $request->pegawai_id,
             'tgl_cuti' => $request->tgl_cuti,
             'lama_cuti' => $request->lama_cuti,
+            'sisa_cuti' => $request->sisa_cuti,
             'keterangan' => $request->keterangan,
         ]);
 

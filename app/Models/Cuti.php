@@ -11,7 +11,7 @@ class Cuti extends Model
     protected $table = "cuti";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'pegawai_id', 'tgl_cuti', 'lama_cuti', 'keterangan'
+        'id', 'pegawai_id', 'tgl_cuti', 'lama_cuti', 'sisa_cuti', 'keterangan'
     ];
 
     public function pegawai()

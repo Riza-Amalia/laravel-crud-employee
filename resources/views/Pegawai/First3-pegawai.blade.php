@@ -27,12 +27,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Data Cuti</h1>
+                            <h1 class="m-0">3 Pertama Bergabung</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data Cuti</li>
+                                <li class="breadcrumb-item active">Data Pegawai</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -45,10 +45,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="card card-info card-outline">
                     <div class="card-header">
                         <div class="card-tools">
-                            <a href="{{ route('create-cuti') }}" class="btn btn-success">Tambah Data <i
-                                    class="fas fa-plus-square"></i></a>
+                            <a href="{{ route('data-pegawai') }}" class="btn btn-success mr-2">Kembali</a>
                         </div>
-                        <div class="card-tools mr-2">
+                        {{-- <div class="card-tools mr-2">
                             <div class="dropdown show">
                                 <a class="btn btn-primary dropdown-toggle" href="#" role="button"
                                     id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -57,12 +56,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('ambil-cuti') }}">Cuti > 1</a>
-                                    <a class="dropdown-item" href="{{ route('sisa-cuti') }}">Sisa Cuti</a>
+                                    <a class="dropdown-item" href="{{ route('data-pegawai-first3') }}">First 3</a>
                                 </div>
-
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="card-body">
@@ -70,33 +67,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <tr>
                                 <th>Nomor</th>
                                 <th>Nomor Induk</th>
-                                <th>Tanggal Cuti</th>
-                                <th>Lama Cuti</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Tanggal Bergabung</th>
                             </tr>
-                            @foreach ($dtCuti as $index => $item)
+                            @foreach ($dtPegawai as $item)
                                 <tr>
-                                    <td>{{ $index + $dtCuti->firstItem() }}</td>
-                                    <td>{{ $item->pegawai->no_induk }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->tgl_cuti)) }}</td>
-                                    <td>{{ $item->lama_cuti }}</td>
-                                    <td>{{ $item->keterangan }}</td>
-                                    <td>
-                                        <a href="{{ url('edit-cuti', $item->id) }}"><i class="fas fa-edit"></i></a>
-                                        |
-                                        <a href="{{ url('delete-cuti', $item->id) }}"><i class="fas fa-trash-alt"
-                                                style="color: red"></i></a>
-                                    </td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->no_induk }}</td>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->alamat }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tgl_lahir)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tgl_bergabung)) }}</td>
                                 </tr>
                             @endforeach
-
                         </table>
                     </div>
                     <div class="card-footer">
-                        {{ $dtCuti->links('pagination::bootstrap-4') }}
+                        {{-- {{ $dtPegawai->links('pagination::bootstrap-4') }} --}}
                     </div>
                 </div>
+
+
+
+
             </div>
             <!-- /.content -->
         </div>
